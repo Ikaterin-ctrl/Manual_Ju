@@ -1,0 +1,227 @@
+/* Retro 70s Sticker Style CSS */
+
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka One', 'Comic Neue', Arial, sans-serif;
+    color: #2e1f27;
+    background-color: #fffbe7;
+    background-image:
+        linear-gradient(45deg, #ffb347 25%, transparent 25%),
+        linear-gradient(-45deg, #ffb347 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ffb347 75%),
+        linear-gradient(-45deg, transparent 75%, #ffb347 75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 30px, 30px -30px, -30px 0;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    font-family: 'Fredoka One', 'Monoton', cursive, sans-serif;
+    color: #ff3c86;
+    text-shadow: 3px 3px 0 #fffbe7, 6px 6px 0 #ffb347;
+    text-align: center;
+    margin-top: 0;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 3.2rem;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 22px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #2e1f27;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    padding: 10px 18px;
+    box-shadow: 0 2px 8px #ffb34733;
+}
+
+section.hero {
+    padding: 80px 20px 50px 20px;
+    background: linear-gradient(120deg, #f3fff0cc 60%, #ffe0ef 100%);
+    text-align: center;
+    border-bottom: 6px dotted #ffb347;
+    box-shadow: 0 8px 24px #ffb34722;
+}
+
+.botao-rolar, .botao-reforco {
+    background: linear-gradient(90deg, #ff3c86 60%, #ffb347 100%);
+    color: #fffbe7;
+    border: 3px solid #2e1f27;
+    font-size: 1.4rem;
+    font-family: 'Fredoka One', 'Comic Neue', cursive;
+    padding: 16px 36px;
+    border-radius: 40px 40px 60px 60px/50px 50px 40px 40px;
+    box-shadow: 0 6px 0 #2e1f27, 0 2px 16px #ffb34755;
+    cursor: pointer;
+    transition: all 0.18s cubic-bezier(.68,-0.55,.27,1.55);
+    margin: 18px auto;
+    display: inline-block;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0 #ffb347;
+    outline: none;
+}
+
+.botao-rolar:hover, .botao-reforco:hover {
+    background: linear-gradient(90deg, #ffb347 60%, #ff3c86 100%);
+    color: #2e1f27;
+    box-shadow: 0 10px 0 #2e1f27, 0 4px 24px #ff3c8655;
+    transform: scale(1.08) rotate(-2deg);
+    border-color: #ff3c86;
+}
+
+section.bloco {
+    padding: 60px 30px;
+    background: linear-gradient(135deg, #f8fff8cc 70%, #ffe0ef 100%);
+    border-bottom: 6px dashed #ffb347;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 16px #ffb34722;
+}
+
+.box-visual {
+    background: repeating-linear-gradient(
+        135deg,
+        #f9f7ff,
+        #f9f7ff 20px,
+        #ffe0ef 20px,
+        #ffe0ef 40px
+    );
+    border: 3px dashed #ffb347;
+    padding: 24px;
+    border-radius: 18px;
+    margin: 36px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 16px #ffb34733;
+}
+
+.box-visual ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.box-visual ul li {
+    padding: 12px 0;
+    font-size: 1.15rem;
+    text-align: left;
+    color: #2e1f27;
+    border-bottom: 1px dotted #ffb347;
+}
+
+.box-visual ul li:last-child {
+    border-bottom: none;
+}
+
+.ferramentas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+    max-width: 900px;
+    margin: 36px auto;
+}
+
+.ferramenta-card {
+    background: linear-gradient(120deg, #ffe0ef 60%, #ffb347 100%);
+    border: 3px solid #ff3c86;
+    padding: 22px 12px;
+    border-radius: 18px 40px 18px 40px/40px 18px 40px 18px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.18rem;
+    color: #b1004c;
+    text-decoration: none;
+    box-shadow: 0 4px 12px #ffb34744;
+    transition: all 0.18s cubic-bezier(.68,-0.55,.27,1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.ferramenta-card:hover {
+    background: linear-gradient(120deg, #ffb347 60%, #ffe0ef 100%);
+    color: #2e1f27;
+    box-shadow: 0 8px 24px #ff3c8644;
+    transform: scale(1.06) rotate(1deg);
+    border-color: #2e1f27;
+}
+
+.frases-poder p {
+    font-weight: bold;
+    font-size: 1.18rem;
+    margin: 18px 0;
+    animation: aparecer 1s ease-in-out both;
+    color: #ff3c86;
+    text-shadow: 1px 1px 0 #fffbe7;
+    background: #fffbe7cc;
+    border-radius: 10px;
+    padding: 8px 14px;
+    border: 2px solid #ffb347;
+    display: inline-block;
+}
+
+.links-ajuda a {
+    color: #ff3c86;
+    text-decoration: underline wavy #ffb347;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.links-ajuda a:hover {
+    color: #b1004c;
+    text-decoration: underline wavy #ff3c86;
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-12px);}
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(24px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 700px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.3rem; }
+    p { font-size: 1rem; padding: 0 8px; }
+    .botao-rolar, .botao-reforco { font-size: 1rem; padding: 10px 18px; }
+    .ferramentas-grid { grid-template-columns: 1fr; }
+    .box-visual { padding: 12px; }
+}
+
+img {
+    display: block;
+    margin: 30px auto 20px auto;
+    max-width: 120px;
+    width: 60vw;
+    height: auto;
+    border-radius: 24px 60px 24px 60px/60px 24px 60px 24px;
+    box-shadow: 0 4px 16px #ffb34755;
+}
+
+.botao-reforco {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+}

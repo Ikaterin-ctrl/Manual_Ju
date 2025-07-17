@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Roboto:wght@400;700&display=swap');
+
+.checklist {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 36px 28px;
+    background: linear-gradient(135deg, #ffb347 0%, #ffcc33 100%);
+    border: 4px solid #ff5e62;
+    border-radius: 24px 60px 24px 60px;
+    box-shadow: 0 8px 32px #ff5e6277, 0 0 0 8px #fffbe6 inset;
+    font-family: 'Roboto', Arial, sans-serif;
+    animation: aparecer 1s cubic-bezier(.68,-0.55,.27,1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.checklist::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, #ff5e62 60%, transparent 100%);
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.checklist ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.checklist li {
+    font-size: 1.35rem;
+    margin-bottom: 22px;
+    color: #3a1c0b;
+    display: flex;
+    align-items: center;
+    font-family: 'Monoton', cursive;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #fffbe6, 0 0 8px #ff5e62aa;
+    transition: color 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.checklist li:hover {
+    color: #ff5e62;
+    text-shadow: 2px 2px 0 #fffbe6, 0 0 16px #ff5e62;
+}
+
+.checklist input[type="checkbox"] {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    margin-right: 18px;
+    border: 3px solid #ff5e62;
+    border-radius: 50%;
+    background: #fffbe6;
+    box-shadow: 0 2px 8px #ff5e6233;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    outline: none;
+}
+
+.checklist input[type="checkbox"]:hover {
+    border-color: #3a1c0b;
+    box-shadow: 0 0 0 4px #ffb34755;
+}
+
+.checklist input[type="checkbox"]:checked {
+    background: radial-gradient(circle at 60% 40%, #ff5e62 60%, #ffb347 100%);
+    border-color: #3a1c0b;
+    box-shadow: 0 0 0 6px #ff5e6244;
+    animation: pop70 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.checklist input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 7px; top: 7px;
+    width: 12px; height: 12px;
+    background: #fffbe6;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #fffbe6;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.8) rotate(-8deg);}
+    to { opacity: 1; transform: scale(1) rotate(0);}
+}
+
+@keyframes pop70 {
+    0% { transform: scale(1);}
+    60% { transform: scale(1.3);}
+    100% { transform: scale(1);}
+}

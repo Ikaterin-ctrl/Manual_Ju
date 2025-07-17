@@ -1,0 +1,70 @@
+.simulador-mensagem label {
+    font-size: 1.15rem;
+    color: #b1004c;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 0 #fffbe7;
+    display: block;
+}
+
+.simulador-mensagem textarea {
+    background: #fff;
+    border: 2px solid #ffb347;
+    border-radius: 16px;
+    font-size: 1.12rem;
+    padding: 18px 18px 18px 48px;
+    margin: 0;
+    box-shadow: 0 2px 12px #ffb34722, 0 1px 4px #ff3c8622 inset;
+    transition: border 0.2s, box-shadow 0.2s;
+    resize: vertical;
+    min-height: 90px;
+    color: #2e1f27;
+    outline: none;
+    position: relative;
+    background-image: url('https://img.icons8.com/ios-filled/24/ff3c86/speech-bubble.png');
+    background-repeat: no-repeat;
+    background-position: 14px 18px;
+    background-size: 22px 22px;
+}
+
+.simulador-mensagem textarea:focus {
+    border: 2px solid #ff3c86;
+    box-shadow: 0 0 0 3px #ffb34744;
+    background-color: #fffbe7;
+}
+
+.simulador-mensagem .botoes {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.simulador-mensagem button {
+    padding: 12px 32px;
+    font-size: 1.08rem;
+    border-radius: 24px;
+    background: linear-gradient(90deg, #b1004c 60%, #ff3c86 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px #ff3c8644;
+    font-family: 'Fredoka One', sans-serif;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.simulador-mensagem button:hover {
+    background: linear-gradient(90deg, #ff3c86 60%, #b1004c 100%);
+    transform: translateY(-2px) scale(1.07);
+    box-shadow: 0 4px 16px #ffb34755;
+}
+
+.simulador-mensagem button:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px #ff3c8622;
+}

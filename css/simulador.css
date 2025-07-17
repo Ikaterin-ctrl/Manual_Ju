@@ -1,0 +1,79 @@
+.simulador-chat {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fffef6;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px #ffb34766;
+  position: relative;
+}
+
+.chat-container {
+  min-height: 200px;
+  margin-bottom: 24px;
+  padding: 12px;
+  border: 2px dashed #ff5e62;
+  border-radius: 16px;
+  background: #fff0f7;
+  font-family: 'Comic Neue', cursive;
+}
+
+.mensagem {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 80%;
+  display: inline-block;
+  animation: aparecer 0.3s ease;
+}
+
+.mensagem.ex {
+  background: #ffe4ec;
+  align-self: flex-start;
+}
+
+.mensagem.voce {
+  background: #b8e8d2;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.respostas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.respostas button {
+  background: linear-gradient(90deg, #ffb347, #ff5e62);
+  color: #fff;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 28px;
+  font-size: 1.1rem;
+  font-family: 'Fredoka One', cursive;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.respostas button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #ff5e62, #ffb347);
+}
+
+.final p {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #b1004c;
+  margin-top: 32px;
+}
+
+.oculto {
+  display: none;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
