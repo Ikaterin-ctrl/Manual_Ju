@@ -1,7 +1,7 @@
-const input = document.getElementById('lembranca');
-const btn = document.getElementById('enterrar');
-const lista = document.getElementById('listaLembrancas');
-const caixa = document.getElementById('caixaAnimada');
+const input = typeof document !== 'undefined' ? document.getElementById('lembranca') : null;
+const btn = typeof document !== 'undefined' ? document.getElementById('enterrar') : null;
+const lista = typeof document !== 'undefined' ? document.getElementById('listaLembrancas') : null;
+const caixa = typeof document !== 'undefined' ? document.getElementById('caixaAnimada') : null;
 
 function salvarLembranca(texto) {
   const existentes = JSON.parse(localStorage.getItem('lembrancas')) || [];
@@ -10,6 +10,7 @@ function salvarLembranca(texto) {
 }
 
 function mostrarLembrancas() {
+  if (!lista) return;
   lista.innerHTML = '';
   const lembrancas = JSON.parse(localStorage.getItem('lembrancas')) || [];
   lembrancas.forEach((item) => {
@@ -19,18 +20,26 @@ function mostrarLembrancas() {
   });
 }
 
-btn.addEventListener('click', () => {
-  const texto = input.value.trim();
-  if (texto === '') return;
+if (btn) {
+  btn.addEventListener('click', () => {
+    const texto = input.value.trim();
+    if (texto === '') return;
 
-  salvarLembranca(texto);
-  input.value = '';
+    salvarLembranca(texto);
+    input.value = '';
 
-  caixa.classList.add('sumir');
-  setTimeout(() => {
-    caixa.classList.remove('sumir');
-    mostrarLembrancas();
-  }, 500);
-});
+    caixa.classList.add('sumir');
+    setTimeout(() => {
+      caixa.classList.remove('sumir');
+      mostrarLembrancas();
+    }, 500);
+  });
+}
 
-document.addEventListener('DOMContentLoaded', mostrarLembrancas);
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', mostrarLembrancas);
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { salvarLembranca };
+}
