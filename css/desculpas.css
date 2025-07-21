@@ -45,3 +45,35 @@
   transform: scale(1.08) rotate(-1deg);
   background: linear-gradient(90deg, #ffb347, #ff3c86);
 }
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .roleta-container {
+    margin: 30px auto;
+    padding: 16px;
+  }
+  .desculpa {
+    font-size: 1.4rem;
+    padding: 16px 24px;
+  }
+  #botao-girar {
+    font-size: 1.05rem;
+    padding: 10px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roleta-container {
+    margin: 20px auto;
+    padding: 12px;
+  }
+  .desculpa {
+    font-size: 1.2rem;
+    padding: 14px 18px;
+    min-height: 60px;
+  }
+  #botao-girar {
+    font-size: 0.95rem;
+    padding: 8px 18px;
+  }
+}
