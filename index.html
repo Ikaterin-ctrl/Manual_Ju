@@ -12,14 +12,33 @@
   
   <!-- Hero / Introdução -->
 <section class="hero" data-aos="fade-up">
-    <h1 class="titulo">Manual da Ex Fodona</h1>
+    <h1 class="titulo">A Bússola de Ju</h1>
     <img src="./assets/elemento_retro_1.png" alt="">
-    <p class="subtitulo">Porque você não precisa de mais um ex escroto na sua vida.</p>
+    <p class="subtitulo">Um espaço dedicado à sua jornada de autoconhecimento, crescimento e celebração. Navegue, explore e reconecte-se com a pessoa incrível que você é.</p>
     <p class="sub">Você não terminou porque cansou de amar. Você terminou porque cansou de sofrer. Agora é sobre você, fodona.</p>
     <button class="botao-rolar" onclick="document.getElementById('dor').scrollIntoView({behavior: 'smooth'})">
       Me mostra como sobreviver
     </button>
   </section>
+
+  <div class="playlists">
+    <h2>Trilha Sonora para sua Jornada</h2>
+    <div class="playlist-item">
+        <h3>Playlist: Foco Total</h3>
+        <p>Para mergulhar no trabalho, nos estudos ou em um novo projeto.</p>
+        <a href="#" class="button" target="_blank">Ouvir Agora</a>
+    </div>
+    <div class="playlist-item">
+        <h3>Playlist: Dançando Sozinha na Sala</h3>
+        <p>Aumente o som e celebre sua própria companhia. Permissão para ser feliz.</p>
+        <a href="#" class="button" target="_blank">Ouvir Agora</a>
+    </div>
+    <div class="playlist-item">
+        <h3>Playlist: Calmaria</h3>
+        <p>Para momentos de relaxamento, meditação ou um banho demorado.</p>
+        <a href="#" class="button" target="_blank">Ouvir Agora</a>
+    </div>
+  </div>
 
   <!-- Seção: Sim, dói pra caralho -->
   <section id="dor" class="bloco" data-aos="zoom-in">
@@ -113,6 +132,17 @@
   </div>
 
   <p style="margin-top: 30px;">Use o que precisar. Ignore o que não fizer sentido agora. Só não esquece: <strong>você tá sobrevivendo lindamente</strong>.</p>
+</section>
+
+<section id="secao-diario" class="journal">
+    <h2 class="section-title">Diário de Descobertas</h2>
+    <p>Um espaço seguro e privado para seus pensamentos. O que for escrito aqui fica salvo apenas no seu navegador.</p>
+    <div id="prompt-container">
+        <p id="prompt-diario">Clique em "Novo Tema" para uma sugestão de escrita.</p>
+        <button id="novo-prompt" class="button-secondary">Novo Tema</button>
+    </div>
+    <textarea id="diario-texto" placeholder="Comece a escrever aqui..."></textarea>
+    <button id="salvar-diario" class="button">Salvar Texto</button>
 </section>
 
 <section id="poder" class="bloco" data-aos="fade-zoom-in">
