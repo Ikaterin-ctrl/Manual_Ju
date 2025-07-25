@@ -1,30 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
 /* Retro 70s Sticker Style CSS */
 
 body {
-    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333; /* Cinza escuro para texto */
+    background-color: #F4F6F5; /* Branco gelo de fundo */
     margin: 0;
     padding: 0;
-    font-family: 'Fredoka One', 'Comic Neue', Arial, sans-serif;
-    color: #2e1f27;
-    background-color: #fffbe7;
-    background-image:
-        linear-gradient(45deg, #ffb347 25%, transparent 25%),
-        linear-gradient(-45deg, #ffb347 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #ffb347 75%),
-        linear-gradient(-45deg, transparent 75%, #ffb347 75%);
-    background-size: 60px 60px;
-    background-position: 0 0, 0 30px, 30px -30px, -30px 0;
-    background-attachment: fixed;
-    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-h1, h2 {
-    font-family: 'Fredoka One', 'Monoton', cursive, sans-serif;
-    color: #ff3c86;
-    text-shadow: 3px 3px 0 #fffbe7, 6px 6px 0 #ffb347;
-    text-align: center;
-    margin-top: 0;
-    letter-spacing: 2px;
+h1, h2, .section-title {
+    font-family: 'Playfair Display', serif;
+    color: #0A4F3B; /* Verde escuro para títulos */
 }
 
 h1 {
@@ -233,4 +221,67 @@ img {
     font-size: 1.1rem;
     text-align: center;
     text-decoration: none;
+}
+
+.button, button {
+    background-color: #127458; /* Verde principal para botões */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover, button:hover {
+    background-color: #0A4F3B; /* Verde escuro no hover */
+    transform: translateY(-2px);
+}
+
+a {
+    color: #127458; /* Verde principal para links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- ESTILOS PARA O DIÁRIO DE DESCOBERTAS --- */
+.journal {
+    padding: 40px 20px;
+    text-align: center;
+}
+#prompt-container {
+    margin-bottom: 20px;
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+}
+#prompt-diario {
+    font-style: italic;
+    color: #555;
+    margin: 0 0 10px 0;
+}
+.button-secondary {
+    background-color: transparent;
+    color: #0A4F3B;
+    border: 2px solid #0A4F3B;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#diario-texto {
+    width: 100%;
+    max-width: 600px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
 }
