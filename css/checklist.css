@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Roboto:wght@400;700&display=swap');
 
+.progresso-wrapper {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#status-checklist {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: #ff3c86;
+    text-shadow: 1px 1px 0 #fffbe6;
+    margin-bottom: 8px;
+}
+
+#barra-progresso {
+    width: 80%;
+    height: 16px;
+    margin: 0 auto;
+    background: #fffbe6;
+    border: 3px solid #ff5e62;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#barra-preenchimento {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ff5e62, #ffb347);
+}
+
+.estrela {
+    display: none;
+    margin-left: 6px;
+    font-size: 1.8rem;
+}
+
 .checklist {
     max-width: 700px;
     margin: 40px auto;
