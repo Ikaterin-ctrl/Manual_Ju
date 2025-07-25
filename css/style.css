@@ -1,287 +1,212 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
-/* Retro 70s Sticker Style CSS */
+/* ==========================================================================
+   BASE DO DESIGN - A BÚSSOLA DE JU (Estética Poor Things)
+   ================================----------------========================== */
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: #333333; /* Cinza escuro para texto */
-    background-color: #F4F6F5; /* Branco gelo de fundo */
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+/* --- FASE 1: Importação de Fontes e Variáveis de Cor --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+/* :root é onde definimos nossas "variáveis" de design. 
+   Isso facilita a mudança de cores em todo o site de uma só vez.
+*/
+:root {
+    /* Paleta de Cores Inspirada em Poor Things */
+    --cor-fundo: #FDF5E6; /* Tom de pergaminho/creme */
+    --cor-texto: #42280E; /* Sépia escuro (quase preto) */
+    --cor-titulo: #0A2463; /* Azul ultramarino */
+    --cor-acento-1: #D8315B; /* Magenta/Vinho */
+    --cor-acento-2: #FFC43D; /* Amarelo-mostarda/Dourado */
+
+    /* Tipografia */
+    --fonte-titulos: 'Playfair Display', serif;
+    --fonte-textos: 'Courier Prime', monospace; /* Fonte de máquina de escrever */
 }
 
+/* --- FASE 2: Estilos Globais e Fundo de Colagem --- */
+
+* {
+    box-sizing: border-box; /* Garante que padding e border não afetem o tamanho final dos elementos */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-textos);
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    
+    /* A MÁGICA DA TEXTURA: Adicione o nome de uma imagem de textura que você vai colocar na pasta */
+    /* Exemplo: background-image: url('textura-papel.png'); */
+    line-height: 1.7;
+}
+
+.site-wrapper {
+    width: 90%;
+    max-width: 1200px; /* Largura máxima para telas grandes */
+    margin: 0 auto; /* Centraliza o conteúdo principal */
+    padding: 40px 0;
+}
+
+/* --- FASE 3: Estilização dos Elementos Principais --- */
+
 h1, h2, .section-title {
-    font-family: 'Playfair Display', serif;
-    color: #0A4F3B; /* Verde escuro para títulos */
+    font-family: var(--fonte-titulos);
+    color: var(--cor-titulo);
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 3.2rem;
-    margin-bottom: 0.5em;
+    font-size: 4rem; /* rem é uma unidade de medida flexível */
+    font-style: italic;
+    color: var(--cor-acento-1); /* Cor de destaque para o título principal */
+    font-weight: 700;
 }
 
-h2 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5em;
+.subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 60px;
+    color: var(--cor-texto);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-acento-2); /* Linha dourada abaixo dos títulos de seção */
+    display: inline-block; /* Para que a borda não ocupe a largura toda */
 }
 
 p {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    margin-bottom: 22px;
-    max-width: 700px;
+    margin-bottom: 15px;
+    max-width: 650px; /* Limita a largura dos parágrafos para melhor leitura */
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    color: #2e1f27;
-    background: rgba(255,255,255,0.7);
-    border-radius: 12px;
-    padding: 10px 18px;
-    box-shadow: 0 2px 8px #ffb34733;
 }
 
-section.hero {
-    padding: 80px 20px 50px 20px;
-    background: linear-gradient(120deg, #f3fff0cc 60%, #ffe0ef 100%);
+/* --- FASE 4: Layout das Seções --- */
+
+.interactive-section {
+    padding: 60px 20px;
+    margin-bottom: 40px;
     text-align: center;
-    border-bottom: 6px dotted #ffb347;
-    box-shadow: 0 8px 24px #ffb34722;
+    position: relative; /* Essencial para a nossa colagem no futuro! */
+    border: 1px solid #e0dace; /* Uma borda sutil, como uma folha de papel */
+    background-color: rgba(255, 255, 255, 0.5); /* Um branco semi-transparente para dar profundidade */
+    border-radius: 4px;
 }
 
-.botao-rolar, .botao-reforco {
-    background: linear-gradient(90deg, #ff3c86 60%, #ffb347 100%);
-    color: #fffbe7;
-    border: 3px solid #2e1f27;
-    font-size: 1.4rem;
-    font-family: 'Fredoka One', 'Comic Neue', cursive;
-    padding: 16px 36px;
-    border-radius: 40px 40px 60px 60px/50px 50px 40px 40px;
-    box-shadow: 0 6px 0 #2e1f27, 0 2px 16px #ffb34755;
-    cursor: pointer;
-    transition: all 0.18s cubic-bezier(.68,-0.55,.27,1.55);
-    margin: 18px auto;
-    display: inline-block;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 0 #ffb347;
-    outline: none;
-}
-
-.botao-rolar:hover, .botao-reforco:hover {
-    background: linear-gradient(90deg, #ffb347 60%, #ff3c86 100%);
-    color: #2e1f27;
-    box-shadow: 0 10px 0 #2e1f27, 0 4px 24px #ff3c8655;
-    transform: scale(1.08) rotate(-2deg);
-    border-color: #ff3c86;
-}
-
-section.bloco {
-    padding: 60px 30px;
-    background: linear-gradient(135deg, #f8fff8cc 70%, #ffe0ef 100%);
-    border-bottom: 6px dashed #ffb347;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 4px 16px #ffb34722;
-}
-
-.box-visual {
-    background: repeating-linear-gradient(
-        135deg,
-        #f9f7ff,
-        #f9f7ff 20px,
-        #ffe0ef 20px,
-        #ffe0ef 40px
-    );
-    border: 3px dashed #ffb347;
-    padding: 24px;
-    border-radius: 18px;
-    margin: 36px auto;
-    max-width: 700px;
-    box-shadow: 0 4px 16px #ffb34733;
-}
-
-.box-visual ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.box-visual ul li {
-    padding: 12px 0;
-    font-size: 1.15rem;
-    text-align: left;
-    color: #2e1f27;
-    border-bottom: 1px dotted #ffb347;
-}
-
-.box-visual ul li:last-child {
-    border-bottom: none;
-}
-
-.ferramentas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 22px;
-    max-width: 900px;
-    margin: 36px auto;
-}
-
-.ferramenta-card {
-    background: linear-gradient(120deg, #ffe0ef 60%, #ffb347 100%);
-    border: 3px solid #ff3c86;
-    padding: 22px 12px;
-    border-radius: 18px 40px 18px 40px/40px 18px 40px 18px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.18rem;
-    color: #b1004c;
-    text-decoration: none;
-    box-shadow: 0 4px 12px #ffb34744;
-    transition: all 0.18s cubic-bezier(.68,-0.55,.27,1.55);
-    position: relative;
-    overflow: hidden;
-}
-
-.ferramenta-card:hover {
-    background: linear-gradient(120deg, #ffb347 60%, #ffe0ef 100%);
-    color: #2e1f27;
-    box-shadow: 0 8px 24px #ff3c8644;
-    transform: scale(1.06) rotate(1deg);
-    border-color: #2e1f27;
-}
-
-.frases-poder p {
-    font-weight: bold;
-    font-size: 1.18rem;
-    margin: 18px 0;
-    animation: aparecer 1s ease-in-out both;
-    color: #ff3c86;
-    text-shadow: 1px 1px 0 #fffbe7;
-    background: #fffbe7cc;
-    border-radius: 10px;
-    padding: 8px 14px;
-    border: 2px solid #ffb347;
-    display: inline-block;
-}
-
-.links-ajuda a {
-    color: #ff3c86;
-    text-decoration: underline wavy #ffb347;
-    font-weight: bold;
-    transition: color 0.2s;
-}
-
-.links-ajuda a:hover {
-    color: #b1004c;
-    text-decoration: underline wavy #ff3c86;
-}
-
-@keyframes flutuar {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-12px);}
-}
-
-@keyframes aparecer {
-    from { opacity: 0; transform: translateY(24px);}
-    to { opacity: 1; transform: translateY(0);}
-}
-
-@media (max-width: 768px) {
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.3rem; }
-    p { font-size: 1rem; padding: 0 8px; }
-    .botao-rolar, .botao-reforco { font-size: 1rem; padding: 10px 18px; }
-    .ferramentas-grid { grid-template-columns: 1fr; }
-    .box-visual { padding: 12px; }
-}
-
-@media (max-width: 480px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.1rem; }
-    p { font-size: 0.95rem; padding: 0 6px; }
-    .botao-rolar, .botao-reforco { font-size: 0.9rem; padding: 8px 14px; }
-    img { max-width: 100px; }
-    .box-visual { padding: 10px; }
-}
-
-img {
-    display: block;
-    margin: 30px auto 20px auto;
-    max-width: 120px;
-    width: 60vw;
-    height: auto;
-    border-radius: 24px 60px 24px 60px/60px 24px 60px 24px;
-    box-shadow: 0 4px 16px #ffb34755;
-}
-
-.botao-reforco {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 12px 28px;
-    font-size: 1.1rem;
-    text-align: center;
-    text-decoration: none;
-}
-
-.button, button {
-    background-color: #127458; /* Verde principal para botões */
-    color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.button:hover, button:hover {
-    background-color: #0A4F3B; /* Verde escuro no hover */
-    transform: translateY(-2px);
-}
-
-a {
-    color: #127458; /* Verde principal para links */
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* --- ESTILOS PARA O DIÁRIO DE DESCOBERTAS --- */
-.journal {
-    padding: 40px 20px;
+.hero-section {
+    padding: 40px 0;
     text-align: center;
 }
-#prompt-container {
-    margin-bottom: 20px;
-    background-color: #e9ecef;
-    padding: 15px;
-    border-radius: 8px;
-}
-#prompt-diario {
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+     border-top: 1px solid #e0dace;
     font-style: italic;
-    color: #555;
-    margin: 0 0 10px 0;
 }
-.button-secondary {
-    background-color: transparent;
-    color: #0A4F3B;
-    border: 2px solid #0A4F3B;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
+
+/* ==========================================================================
+   FASE 5: A ESTÉTICA DE COLAGEM (AVANÇADO)
+   ========================================================================== */
+
+/* Primeiro, preparamos a "mesa de trabalho" */
+.hero-section {
+    position: relative; /* ESSENCIAL! Torna-se o ponto de referência para os elementos internos. */
+    overflow: hidden; /* Evita que elementos vazem de forma feia (podemos remover depois) */
+    min-height: 80vh; /* Garante que a seção tenha altura suficiente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-#diario-texto {
+
+/* Agora, estilizamos o container das nossas camadas */
+.collage-layers {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 600px;
-    min-height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 20px;
+    height: 100%;
+    z-index: 0; /* Coloca as camadas ATRÁS do texto por padrão */
+}
+
+/* E agora, posicionamos cada recorte individualmente */
+.collage-element {
+    position: absolute; /* Permite que a gente posicione onde quisermos */
+    opacity: 0.5; /* Deixa as imagens um pouco transparentes */
+    transition: transform 0.3s ease;
+}
+
+.collage-element:hover {
+    transform: scale(1.05); /* Efeito sutil ao passar o mouse */
+}
+
+/* POSICIONAMENTO INDIVIDUAL - AQUI ACONTECE A ARTE */
+
+/* Coração Anatômico */
+.element-1 {
+    width: 200px; /* Tamanho da imagem */
+    top: 15%; /* 15% do topo */
+    left: 10%; /* 10% da esquerda */
+    transform: rotate(-15deg); /* Inclinação! */
+}
+
+/* Flor Botânica */
+.element-2 {
+    width: 300px;
+    bottom: 5%;
+    right: 5%;
+    transform: rotate(10deg);
+    opacity: 0.7;
+}
+
+/* Mapa Estelar */
+.element-3 {
+    width: 450px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(5deg); /* Centraliza e rotaciona */
+    opacity: 0.2; /* Bem sutil, quase uma marca d'água */
+}
+
+/* Garantimos que o texto fique na frente das camadas de colagem */
+.hero-section h1, .hero-section .subtitle {
+    position: relative;
+    z-index: 1; 
+}
+
+/* ==========================================================================
+   FASE 6: ANIMAÇÃO PSICODÉLICA SURREALISTA
+   ========================================================================== */
+
+/* 1. Definindo a "receita" da animação de pulsar */
+@keyframes pulsar {
+  0% {
+    transform: rotate(-15deg) scale(1); /* Estado inicial (como já está) */
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotate(-15deg) scale(1.05); /* No meio da animação, ele cresce 5% */
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(-15deg) scale(1); /* Volta ao estado inicial para criar o loop */
+    opacity: 0.5;
+  }
+}
+
+/* 2. Aplicando a animação ao nosso coração */
+.element-1 { /* Este é o seletor do nosso coração anatômico */
+    /* As propriedades antigas continuam aqui (width, top, left, etc.) */
+    
+    /* ADICIONANDO A ANIMAÇÃO */
+    animation-name: pulsar; /* Diz para usar a receita 'pulsar' */
+    animation-duration: 5s; /* A animação completa leva 5 segundos */
+    animation-iteration-count: infinite; /* Diz para ela se repetir PARA SEMPRE */
+    animation-timing-function: ease-in-out; /* O ritmo do pulso, suave */
 }
