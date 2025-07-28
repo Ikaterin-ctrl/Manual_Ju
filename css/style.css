@@ -9,7 +9,7 @@
     --cor-texto: #3B2E2E;
     --cor-titulo-principal: #8C2F39;
     --cor-acento-hover: #D8315B;
-    --fonte-titulos: 'Cormorant Garamond', serif;
+    --fonte-titulos: 'Cormorant Garamond', serif; 
     --fonte-textos: 'Poppins', sans-serif;
 }
 
@@ -18,7 +18,7 @@ body {
     font-family: var(--fonte-textos);
     font-weight: 300;
     color: var(--cor-texto);
-    background-image: url('/assets/fundo-arte.png');
+    background-image: url('../assets/fundo-arte.png');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -88,7 +88,7 @@ h1 {
 
 .portal-card {
     /* Usando a imagem do card de vidro como fundo */
-    background-image: url('/assets/card-vidro.png');
+    background-image: url('../assets/card-vidro.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     
