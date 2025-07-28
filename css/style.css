@@ -1,212 +1,210 @@
 /* ==========================================================================
-   BASE DO DESIGN - A BÚSSOLA DE JU (Estética Poor Things)
-   ================================----------------========================== */
+   A BÚSSOLA DE JU - CSS FINAL (COM RESPONSIVIDADE E MONTAGEM DE IMAGENS)
+   ========================================================================== */
 
-/* --- FASE 1: Importação de Fontes e Variáveis de Cor --- */
+/* --- FONTES E VARIÁVEIS --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400&family=Poppins:wght@300;400&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
-
-/* :root é onde definimos nossas "variáveis" de design. 
-   Isso facilita a mudança de cores em todo o site de uma só vez.
-*/
 :root {
-    /* Paleta de Cores Inspirada em Poor Things */
-    --cor-fundo: #FDF5E6; /* Tom de pergaminho/creme */
-    --cor-texto: #42280E; /* Sépia escuro (quase preto) */
-    --cor-titulo: #0A2463; /* Azul ultramarino */
-    --cor-acento-1: #D8315B; /* Magenta/Vinho */
-    --cor-acento-2: #FFC43D; /* Amarelo-mostarda/Dourado */
-
-    /* Tipografia */
-    --fonte-titulos: 'Playfair Display', serif;
-    --fonte-textos: 'Courier Prime', monospace; /* Fonte de máquina de escrever */
+    --cor-texto: #3B2E2E;
+    --cor-titulo-principal: #8C2F39;
+    --cor-acento-hover: #D8315B;
+    --fonte-titulos: 'Cormorant Garamond', serif;
+    --fonte-textos: 'Poppins', sans-serif;
 }
 
-/* --- FASE 2: Estilos Globais e Fundo de Colagem --- */
-
-* {
-    box-sizing: border-box; /* Garante que padding e border não afetem o tamanho final dos elementos */
-    margin: 0;
-    padding: 0;
-}
-
+/* --- SETUP GLOBAL E FUNDO ARTÍSTICO --- */
 body {
     font-family: var(--fonte-textos);
+    font-weight: 300;
     color: var(--cor-texto);
-    background-color: var(--cor-fundo);
-    
-    /* A MÁGICA DA TEXTURA: Adicione o nome de uma imagem de textura que você vai colocar na pasta */
-    /* Exemplo: background-image: url('textura-papel.png'); */
-    line-height: 1.7;
+    background-image: url('/assets/fundo-arte.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* --- COLAGEM DE ELEMENTOS FLUTUANTES --- */
+.background-collage {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: 0;
+}
+.collage-element {
+    position: absolute;
+    opacity: 0.1;
+    animation: flutuar 30s ease-in-out infinite alternate;
+}
+.element-anatomy { width: 350px; top: 15%; left: -5%; animation-delay: -5s; }
+.element-crown { width: 300px; bottom: 5%; right: -5%; animation-delay: -10s; }
+.element-bat { width: 250px; top: 10%; right: 15%; animation-delay: -2s; }
+.element-pisces { width: 200px; bottom: 30%; left: 10%; animation-delay: -15s; }
+
+@keyframes flutuar {
+    from { transform: translateY(0px) rotate(-5deg); }
+    to { transform: translateY(-60px) rotate(5deg); }
+}
+
+/* --- LAYOUT PRINCIPAL --- */
 .site-wrapper {
-    width: 90%;
-    max-width: 1200px; /* Largura máxima para telas grandes */
-    margin: 0 auto; /* Centraliza o conteúdo principal */
-    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10vh 0;
 }
-
-/* --- FASE 3: Estilização dos Elementos Principais --- */
-
-h1, h2, .section-title {
-    font-family: var(--fonte-titulos);
-    color: var(--cor-titulo);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 4rem; /* rem é uma unidade de medida flexível */
-    font-style: italic;
-    color: var(--cor-acento-1); /* Cor de destaque para o título principal */
-    font-weight: 700;
-}
-
-.subtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 60px;
-    color: var(--cor-texto);
-}
-
-.section-title {
-    font-size: 2.5rem;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--cor-acento-2); /* Linha dourada abaixo dos títulos de seção */
-    display: inline-block; /* Para que a borda não ocupe a largura toda */
-}
-
-p {
-    margin-bottom: 15px;
-    max-width: 650px; /* Limita a largura dos parágrafos para melhor leitura */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-/* --- FASE 4: Layout das Seções --- */
-
-.interactive-section {
-    padding: 60px 20px;
-    margin-bottom: 40px;
-    text-align: center;
-    position: relative; /* Essencial para a nossa colagem no futuro! */
-    border: 1px solid #e0dace; /* Uma borda sutil, como uma folha de papel */
-    background-color: rgba(255, 255, 255, 0.5); /* Um branco semi-transparente para dar profundidade */
-    border-radius: 4px;
-}
-
 .hero-section {
-    padding: 40px 0;
+    min-height: 50vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
     text-align: center;
+    margin-bottom: 10vh;
+}
+h1 {
+    font-family: var(--fonte-titulos);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--cor-titulo-principal);
+    line-height: 0.9;
+
+    /* --- CORREÇÃO DE CAMADA E CONTRASTE --- */
+    position: relative; /* Permite o uso do z-index */
+    z-index: 3; /* Força o título para a camada mais alta */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra para contraste */
 }
 
+/* --- A MESA DE COLAGEM E OS CARDS ESPALHADOS (VISÃO DESKTOP) --- */
+.collage-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Altura para espalhar os cards */
+    margin: 0 auto;
+}
+
+.portal-card {
+    /* Usando a imagem do card de vidro como fundo */
+    background-image: url('/assets/card-vidro.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+    /* Configurações de layout e texto */
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 40px;
+    text-decoration: none;
+    color: var(--cor-texto);
+    
+    /* A MÁGICA: Posicionamento absoluto para espalhar */
+    position: absolute;
+    width: 340px;
+    height: 260px;
+    
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.portal-card:hover {
+    transform: scale(1.1) rotate(0deg) !important; /* Remove a rotação no hover para focar */
+    z-index: 10;
+}
+.card-content h3 {
+    font-family: var(--fonte-titulos);
+    font-size: 1.8rem;
+    color: var(--cor-titulo-principal);
+    margin-bottom: 10px;
+}
+.card-content p { font-size: 0.9rem; }
+
+/* Posicionamento manual de CADA card individualmente na "mesa" */
+.card-1 { top: 0; left: 5%; transform: rotate(-10deg); }
+.card-2 { top: 10vh; right: 8%; transform: rotate(8deg); }
+.card-3 { top: 45vh; left: 20%; transform: rotate(5deg); }
+.card-4 { top: 55vh; right: 25%; transform: rotate(-6deg); }
+
+/* --- A MÁGICA DA RESPONSIVIDADE (VISÃO CELULAR) --- */
+@media (max-width: 768px) {
+    /* No celular, a "mesa" encolhe e os cards se empilham */
+    .collage-container {
+        min-height: auto; /* Altura volta a ser automática */
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .portal-card {
+        position: static; /* DESLIGA o posicionamento absoluto */
+        transform: rotate(0deg) !important; /* Remove qualquer rotação */
+        width: 100%; /* Ocupa a largura toda */
+        height: auto;
+        min-height: 220px;
+    }
+
+    .background-collage {
+        opacity: 0.5; /* Deixa a colagem de fundo mais sutil no celular */
+    }
+}
+
+/* --- RODAPÉ --- */
 .site-footer {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-     border-top: 1px solid #e0dace;
-    font-style: italic;
-}
-
-/* ==========================================================================
-   FASE 5: A ESTÉTICA DE COLAGEM (AVANÇADO)
-   ========================================================================== */
-
-/* Primeiro, preparamos a "mesa de trabalho" */
-.hero-section {
-    position: relative; /* ESSENCIAL! Torna-se o ponto de referência para os elementos internos. */
-    overflow: hidden; /* Evita que elementos vazem de forma feia (podemos remover depois) */
-    min-height: 80vh; /* Garante que a seção tenha altura suficiente */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Agora, estilizamos o container das nossas camadas */
-.collage-layers {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Coloca as camadas ATRÁS do texto por padrão */
-}
-
-/* E agora, posicionamos cada recorte individualmente */
-.collage-element {
-    position: absolute; /* Permite que a gente posicione onde quisermos */
-    opacity: 0.5; /* Deixa as imagens um pouco transparentes */
-    transition: transform 0.3s ease;
-}
-
-.collage-element:hover {
-    transform: scale(1.05); /* Efeito sutil ao passar o mouse */
-}
-
-/* POSICIONAMENTO INDIVIDUAL - AQUI ACONTECE A ARTE */
-
-/* Coração Anatômico */
-.element-1 {
-    width: 200px; /* Tamanho da imagem */
-    top: 15%; /* 15% do topo */
-    left: 10%; /* 10% da esquerda */
-    transform: rotate(-15deg); /* Inclinação! */
-}
-
-/* Flor Botânica */
-.element-2 {
-    width: 300px;
-    bottom: 5%;
-    right: 5%;
-    transform: rotate(10deg);
-    opacity: 0.7;
-}
-
-/* Mapa Estelar */
-.element-3 {
-    width: 450px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(5deg); /* Centraliza e rotaciona */
-    opacity: 0.2; /* Bem sutil, quase uma marca d'água */
-}
-
-/* Garantimos que o texto fique na frente das camadas de colagem */
-.hero-section h1, .hero-section .subtitle {
+    padding: 40px;
     position: relative;
-    z-index: 1; 
+    z-index: 2;
+}
+/* --- ESTILO DO BOTÃO DE ENTRADA NA HOME --- */
+.hero-home {
+    min-height: 80vh; /* Garante que o botão não fique colado no topo */
 }
 
-/* ==========================================================================
-   FASE 6: ANIMAÇÃO PSICODÉLICA SURREALISTA
-   ========================================================================== */
-
-/* 1. Definindo a "receita" da animação de pulsar */
-@keyframes pulsar {
-  0% {
-    transform: rotate(-15deg) scale(1); /* Estado inicial (como já está) */
-    opacity: 0.5;
-  }
-  50% {
-    transform: rotate(-15deg) scale(1.05); /* No meio da animação, ele cresce 5% */
-    opacity: 0.7;
-  }
-  100% {
-    transform: rotate(-15deg) scale(1); /* Volta ao estado inicial para criar o loop */
-    opacity: 0.5;
-  }
+.portal-button {
+    font-family: var(--fonte-titulos);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--cor-fundo);
+    background-color: var(--cor-titulo-principal);
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
 }
 
-/* 2. Aplicando a animação ao nosso coração */
-.element-1 { /* Este é o seletor do nosso coração anatômico */
-    /* As propriedades antigas continuam aqui (width, top, left, etc.) */
+.portal-button:hover {
+    background-color: var(--cor-acento-hover);
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+/* --- ESTILO DO CONTAINER DO SUBTÍTULO (O PAPEL RASGADO) --- */
+.subtitle-container {
+    /* Cor de fundo de pergaminho, quase opaca para garantir a leitura */
+    background-color: rgba(253, 245, 230, 0.9); 
+    padding: 20px 30px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    position: relative;
+    z-index: 3; /* Garante que fique acima da colagem */
     
-    /* ADICIONANDO A ANIMAÇÃO */
-    animation-name: pulsar; /* Diz para usar a receita 'pulsar' */
-    animation-duration: 5s; /* A animação completa leva 5 segundos */
-    animation-iteration-count: infinite; /* Diz para ela se repetir PARA SEMPRE */
-    animation-timing-function: ease-in-out; /* O ritmo do pulso, suave */
+    /* A MÁGICA DO PAPEL RASGADO */
+    /* Este código cria uma forma de polígono com bordas irregulares */
+    clip-path: polygon(0% 15%, 5% 0%, 15% 5%, 23% 0%, 34% 8%, 46% 3%, 59% 10%, 73% 2%, 86% 12%, 95% 4%, 100% 16%, 100% 85%, 95% 100%, 85% 96%, 78% 100%, 65% 95%, 52% 100%, 41% 94%, 27% 100%, 15% 94%, 5% 100%, 0% 85%);
+}
+
+
+/* --- AJUSTE FINAL NO SUBTÍTULO --- */
+.subtitle {
+    font-size: 1.2rem; /* Aumentei um pouco para mais destaque */
+    font-weight: 400;
+    max-width: 400px;
+    text-align: center;
+    color: var(--cor-texto); /* Garante a cor do texto, mesmo dentro do container */
+    
+    /* Removemos o text-shadow pois o fundo já resolve o contraste */
+    text-shadow: none; 
+    
+    /* Removemos margens para que ele se ajuste ao container */
+    margin: 0; 
 }

@@ -1,0 +1,192 @@
+/* ==========================================================================
+   BUSSOLA.CSS - VERSÃO FINAL E COMPLETA
+   Estética: Mesa de Anatomia Interativa
+   ========================================================================== */
+
+/* --- FASE 1: FONTES E VARIÁVEIS DE DESIGN --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400&family=Poppins:wght@300;400&display=swap');
+
+:root {
+    --cor-fundo-bordo: #5a1a3a;
+    --cor-painel: rgba(250, 245, 235, 0.97);
+    --cor-texto-claro: #FDF5E6;
+    --cor-texto-painel: #3B2E2E;
+    --cor-titulo-painel: #8C2F39;
+    --fonte-titulos: 'Cormorant Garamond', serif;
+    --fonte-textos: 'Poppins', sans-serif;
+}
+
+/* --- FASE 2: SETUP GLOBAL E CENA FIXA --- */
+body {
+    font-family: var(--fonte-textos);
+    background-color: var(--cor-fundo-bordo);
+    color: var(--cor-texto-claro);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Cena fixa, sem scroll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+/* --- FASE 3: A COLAGEM DE FUNDO FLUTUANTE --- */
+.background-collage {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none; /* Não interfere com cliques */
+}
+
+.collage-element {
+    position: absolute;
+    opacity: 0.1;
+    animation: flutuar 40s ease-in-out infinite alternate;
+}
+
+.element-anatomy { width: 350px; top: 15%; left: -5%; }
+.element-crown { width: 300px; bottom: -5%; right: -5%; }
+.element-bat { width: 250px; top: 10%; right: 15%; }
+.element-pisces { width: 220px; bottom: 20%; left: 10%; }
+
+@keyframes brilho-flutuante {
+  0% {
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.5)) brightness(1);
+    transform: translateY(0px);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.6)) brightness(1.15);
+    transform: translateY(-8px);
+  }
+  100% {
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.5)) brightness(1);
+    transform: translateY(0px);
+  }
+}
+/* --- FASE 4: O MAPA ANATÔMICO E OS PONTOS DE INTERESSE --- */
+.anatomy-map {
+    position: relative;
+    z-index: 1;
+    height: 85vh;
+    max-width: 100%;
+}
+
+.anatomy-image {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.4));
+}
+
+/* --- PONTOS DE INTERESSE (COM CORREÇÕES E ANIMAÇÃO NOVA) --- */
+.interest-point {
+    position: absolute;
+    display: block;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* NOVA ANIMAÇÃO APLICADA */
+    animation: brilho-flutuante 4s ease-in-out infinite;
+}
+.interest-point img { width: 100%; height: auto; display: block; }
+.interest-point:hover {
+    transform: scale(1.25) !important;
+    animation-play-state: paused; /* Pausa a animação no hover para facilitar o clique */
+    filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.8)) brightness(1.25);
+}
+
+/* SEU POSICIONAMENTO (AGORA COM Z-INDEX PARA CORRIGIR O CLIQUE) */
+.point-head { top: 1%; left:46%; width: 8rem; z-index: 5; }
+.point-eyes { top: 13%; left: 50%; width: 5rem; transform: translateX(-50%); z-index: 5; }
+.point-mouth { top: 18%; left: 58%; width: 1.5rem; z-index: 5; }
+.point-spine { top: 22%; left: 39%; width: 10rem; z-index: 5; }
+.point-heart { top: 26%; left: 58%; width: 4.5rem; z-index: 6; } /* Z-INDEX MAIOR */
+.point-hand-left { top: 26%; left: 1%; width: 10rem; transform: rotate(15deg); z-index: 5; }
+.point-hand-right { top: 43%; right: 2%; width: 130px; transform: rotate(-15deg); z-index: 5; }
+
+/* --- ESTILOS ADICIONADOS PARA OS PAINÉIS DE FERRAMENTAS --- */
+.tool-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    z-index: 100;
+    
+    width: 90%;
+    max-width: 550px;
+    padding: 25px 35px;
+    
+    background-color: var(--cor-painel);
+    color: var(--cor-texto-painel);
+    border: 4px double var(--cor-titulo-painel);
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Classe que será adicionada via JS para mostrar o painel */
+.tool-container.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.tool-container h2 {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-titulo-painel);
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px; right: 15px;
+    background: none; border: none;
+    font-size: 2.5rem; color: var(--cor-titulo-painel);
+    cursor: pointer; line-height: 1;
+}
+
+
+/* ==========================================================================
+   NOVO: A COREOGRAFIA RESPONSIVA
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Ajusta a imagem principal para o formato vertical */
+    /* A imagem de anatomia agora ocupa a tela inteira para uma experiência imersiva */
+    .anatomy-map {
+        height: 100vh;
+        width: 100vw; /* Ocupa a largura toda */
+    }
+    .anatomy-image {
+        /* A imagem preenche o container, mantendo sua proporção */
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Garante que a imagem inteira apareça, sem cortes */
+        margin-top: 0; /* Removemos a margem anterior */
+    }
+
+    /* Re-posicionamento preciso dos botões para se alinharem com a imagem em tela cheia */
+    /* Os valores de 'top' e 'left' foram ajustados para a nova proporção da imagem */
+    .point-head { top: 2%; left: 46%; width: 30vw; transform: translateX(-50%); }
+    .point-eyes { top: 14%; left: 52%; width: 18vw; transform: translateX(-50%); }
+    .point-mouth { top: 19%; left: 57%; width: 6vw; transform: translateX(-50%); }
+    .point-spine { top: 22%; left: 43%; width: 33vw; }
+    .point-heart { top: 28%; left: 58%; width: 15vw; transform: translateX(-50%); }
+    .point-hand-left { top: 28%; left: 5%; width: 25vw; transform: rotate(20deg); }
+    .point-hand-right { top: 45%; right: 5%; width: 25vw; transform: rotate(-20deg); }
+
+    /* Esconde a colagem de fundo para não poluir a tela pequena */
+    .background-collage {
+        display: none;
+    }
+}
