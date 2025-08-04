@@ -104,3 +104,4 @@ function setupAnatomyTable() {
 
 // Executa a função quando a página é carregada
 setupAnatomyTable();
+

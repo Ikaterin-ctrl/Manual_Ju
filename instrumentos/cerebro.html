@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O Laboratório de Pensamentos | Gabinete de Si Mesma</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollSmoother.min.js"></script>
+
+    <link rel="stylesheet" href="../css/cerebro.css" /> 
+</head>
+<body>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <header class="hero-header">
+                <h1>O Laboratório de Pensamentos</h1>
+                <p>Aonde as percepções são destruídas e restauradas.</p>
+            </header>
+
+            <main class="content-sections">
+                <section class="tool-section anim-from-left">
+                    <div class="glass-panel">
+                        <h2>Diário de Descobertas</h2>
+                        <textarea id="diario-cerebro" placeholder="O que está na sua mente hoje?"></textarea>
+                        <button id="salvar-diario-cerebro" class="tool-button">Arquivar Pensamento</button>
+                    </div>
+                </section>
+
+                <section class="tool-section anim-from-right">
+                    <div class="glass-panel">
+                        <h2>Laboratório de Perspectivas</h2>
+                        <input type="text" id="pensamento-bruto" placeholder="O Pensamento Bruto...">
+                        <textarea id="evidencia-contraria" placeholder="A Evidência Contrária..."></textarea>
+                    </div>
+                </section>
+                
+                <section class="tool-section anim-from-bottom">
+                    <div class="glass-panel">
+                        <h2>Biblioteca de Pergaminhos</h2>
+                        <div class="resource-list">
+                           <a href="#" class="resource-link">Artigo: O que é a Síndrome do Impostor?</a>
+                           <a href="#" class="resource-link">Artigo: Introdução ao Estoicismo</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="site-footer">
+                <a href="../bussola.html">← Voltar ao Mapa da Alma</a>
+            </footer>
+        </div>
+    </div>
+    <script src="../js/cerebro.js"></script>
+</body>
+</html>

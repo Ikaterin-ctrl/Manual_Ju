@@ -1,0 +1,189 @@
+/* ==========================================================================
+   CEREBRO.CSS - VERSÃO FINAL, COMPLETA E CORRIGIDA
+   Estética: Laboratório Mental Retrofuturista
+   ========================================================================== */
+
+/* --- FASE 1: FONTES E VARIÁVEIS DE DESIGN --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400&family=Poppins:wght@200;400;600&display=swap');
+
+:root {
+    --cor-fundo-espaco: #0f0c29;
+    --cor-fundo-espaco-fim: #24243e;
+    --cor-painel-vidro: rgba(20, 20, 35, 0.5);
+    --cor-borda-filamento: rgba(255, 192, 203, 0.6); /* Rosa-dourado */
+    --cor-texto-principal: #e0e0e0;
+    --cor-titulo: #FFFFFF;
+    --cor-subtitulo: #a39bb8; /* Lavanda acinzentado */
+    --fonte-titulos: 'Cormorant Garamond', serif;
+    --fonte-textos: 'Poppins', sans-serif;
+}
+
+/* --- FASE 2: SETUP GLOBAL E FUNDO DE PARTÍCULAS --- */
+body {
+    background-color: var(--cor-fundo-espaco);
+    background-image: linear-gradient(to bottom, var(--cor-fundo-espaco), var(--cor-fundo-espaco-fim));
+    color: var(--cor-texto-principal);
+    font-family: var(--fonte-textos);
+    font-weight: 200;
+    overflow-x: hidden;
+    /* GSAP vai controlar o overflow-y */
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: particles 80s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+@keyframes particles { 
+    from { transform: translateY(0); } 
+    to { transform: translateY(-1000px); } 
+}
+
+/* --- FASE 3: ESTRUTURA GSAP E LAYOUT PRINCIPAL --- */
+#smooth-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+}
+#smooth-content {
+    overflow: visible;
+    width: 100%;
+}
+
+.hero-header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-family: var(--fonte-titulos);
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 700;
+    color: var(--cor-titulo);
+    text-shadow: 0 0 15px var(--cor-borda-filamento), 0 0 25px var(--cor-borda-filamento);
+    letter-spacing: 2px;
+}
+
+.hero-header p {
+    font-size: 1.2rem;
+    color: var(--cor-subtitulo);
+    max-width: 500px;
+    margin-top: 15px;
+}
+
+.content-sections {
+    width: 90%;
+    max-width: 750px;
+    margin: 15vh auto;
+    padding-bottom: 20vh; 
+}
+
+.tool-section {
+    margin-bottom: 30vh;
+    opacity: 0; /* Começa invisível para a animação GSAP */
+    visibility: hidden; /* Garante que não interfira antes de aparecer */
+}
+.tool-section.is-visible { /* Quando tiver essa classe... */
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- FASE 4: O PAINEL DE VIDRO RETROFUTURISTA (COM CORREÇÃO DO BUG) --- */
+.glass-panel {
+    background: var(--cor-painel-vidro);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+/* O NOVO EFEITO DE BORDA BRILHANTE (Funciona em todos os navegadores) */
+.glass-panel::before {
+    content: '';
+    position: absolute;
+    z-index: -1; /* Fica ATRÁS do painel de vidro */
+    top: -2px; 
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(60deg, var(--cor-borda-filamento), rgba(90, 200, 250, 0.4));
+    border-radius: 25px; /* O mesmo border-radius do painel */
+    animation: girar-brilho 6s linear infinite;
+}
+
+@keyframes girar-brilho {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* --- FASE 5: CONTEÚDO DENTRO DOS PAINÉIS --- */
+.glass-panel h2 {
+    font-family: var(--fonte-titulos);
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--cor-titulo);
+}
+.glass-panel p {
+    font-size: 1rem;
+    color: var(--cor-subtitulo);
+    margin-bottom: 30px;
+}
+.tool-textarea, .tool-input, .tool-button, .resource-link {
+    font-family: var(--fonte-textos);
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.2);
+    color: var(--cor-texto-principal);
+    padding: 12px 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.tool-textarea::placeholder, .tool-input::placeholder { color: rgba(255,255,255,0.4); }
+.tool-button { cursor: pointer; background: var(--cor-borda-filamento); color: #1a1a2e; font-weight: 600; border: none; }
+.resource-link { display: block; text-decoration: none; transition: background-color 0.3s ease; }
+.resource-link:hover { background-color: rgba(255,255,255,0.1); }
+
+
+/* --- FASE 6: RODAPÉ E LINK DE VOLTAR --- */
+.site-footer {
+    text-align: center;
+    padding-bottom: 5vh;
+}
+.site-footer a {
+    color: var(--cor-subtitulo);
+    text-decoration: none;
+    font-family: var(--fonte-titulos);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+
+/* --- FASE 7: RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    body { overflow: auto; } /* Ativa o scroll normal */
+    #smooth-wrapper { position: static; overflow: visible; }
+    #smooth-content { overflow: visible; }
+    
+    h1 { font-size: 2.5rem; }
+    .glass-panel { padding: 25px; }
+    .glass-panel h2 { font-size: 2rem; }
+}
